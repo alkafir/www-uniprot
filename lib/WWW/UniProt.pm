@@ -182,7 +182,7 @@ or C<undef> if the data could not be retrieved.
 
 This subroutine performs a search on UniProt. It accepts one mandatory argument
 C<$query> and one optional C<\%opts>. The C<$query> argument is a query string
-that will be used to search UniProt (i.e. 'myosine', 'amoeba', etc...). The
+that will be used to search UniProt (i.e. 'myosin', 'amoeba', etc...). The
 C<\%opts> argument is an optional reference to a hash of optional arguments.
 
 =head3 Optional arguments
