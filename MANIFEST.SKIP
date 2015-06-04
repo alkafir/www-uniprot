@@ -2,8 +2,10 @@
 ~$
 ^#
 \.bak$
-Build
+^Build$
 ^_build
 ^blib
 ^MYMETA\.yml$
 ^MYMETA\.json$
+^MANIFEST\.SKIP$
+\.tar\.gz$

@@ -4,3 +4,5 @@ Build
 *.yml
 *.json
 *.bak
+*.tar.gz
+MANIFEST
