@@ -3,7 +3,7 @@
 use Module::Build;
 
 my $build = Module::Build->new (
-  module_name => 'WWW::Search::UniProt',
+  module_name => 'WWW::UniProt',
   license => 'perl',
   allow_pureperl => 1,
   requires => {
