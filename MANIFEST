@@ -1,0 +1,6 @@
+example/protnames.pl
+lib/WWW/Search/UniProt.pm
+MANIFEST			This list of files
+MANIFEST.SKIP
+t/fasta.t
+t/query.t
