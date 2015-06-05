@@ -37,11 +37,11 @@ BEGIN {
 #  A string representing the FASTA file retrieve or undef if none is found
 sub get_protein {
   my $protname = uc(shift);
-  my $opt = shift || {};
+  my $opt = shift // {};
 
-  my $dbname = ${$opt}{dbname} || 'uniprot';
-  my $format = ${$opt}{format} || 'fasta';
-  my $include = ${$opt}{include} || 0;
+  my $dbname = ${$opt}{dbname} // 'uniprot';
+  my $format = ${$opt}{format} // 'fasta';
+  my $include = ${$opt}{include} // 0;
 
   $format = lc($format) if (defined $format);
   $dbname = lc($dbname) if (defined $dbname);
@@ -71,9 +71,9 @@ sub get_protein {
 #  as keys and the received values as values
 sub search {
   my $query = uri_escape(shift);
-  my $opt = shift || {};
+  my $opt = shift // {};
 
-  my $columns = ${$opt}{'columns'} || [qw(id)];
+  my $columns = ${$opt}{'columns'} // [qw(id)];
 
   # Remove already parsed entries
   delete ${$opt}{qw(columns)};
