@@ -16,9 +16,9 @@ use URI::Escape;
 our $UAString = "Quniprot/$VERSION"; # User Agent string
 
 BEGIN {
-  our $VERSION = 0.001;
+  our $VERSION = 0.002;
 
-  our @EXPORT = qw(get_protein search);
+  our @EXPORT_OK = qw(get_protein search);
 }
 
 # Retrieves the required protein entry from the UniProt database.

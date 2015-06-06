@@ -11,7 +11,7 @@ BEGIN {
   push @INC, Cwd::abs_path((File::Basename::fileparse(__FILE__))[1] . '../lib');
 }
 
-use WWW::UniProt;
+use WWW::UniProt qw(get_protein);
 use Test::Simple tests => 1;
 
 # Network FASTA

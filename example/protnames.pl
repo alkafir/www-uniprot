@@ -9,7 +9,7 @@ BEGIN {
   push @INC, Cwd::abs_path((File::Basename::fileparse(__FILE__))[1] . '../lib');
 }
 
-use WWW::UniProt;
+use WWW::UniProt qw(search get_protein);
 
 @result = search 'russula', {columns => ['id', 'protein names']};
 

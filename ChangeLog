@@ -1,0 +1,2 @@
+2015-06-06  Alfredo Mungo  <alqafir@cpan.org>
+	* lib/WWW/UniProt.pm: subroutines aren't automatically exported anymore
