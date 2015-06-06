@@ -9,7 +9,7 @@ package WWW::UniProt;
 
 use Exporter 'import';
 
-use warnings;
+use strict;
 use LWP::UserAgent;
 use URI::Escape;
 
