@@ -8,4 +8,5 @@
 ^MYMETA\.yml$
 ^MYMETA\.json$
 ^MANIFEST\.SKIP$
+^README\.md$
 \.tar\.gz$
