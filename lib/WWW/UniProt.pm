@@ -221,11 +221,11 @@ each value is the value of that column for that record.
 
   # This example prints the 'ID' and 'protein names' field of the proteins
   # retrieved from UniProt, searching 'russula'.
-  
+
   use WWW::UniProt;
-  
+
   @result = search 'russula', {columns => ['id', 'protein names']};
-  
+
   print "ID: ${$_}{'id'}, Protein names: ${$_}{'protein names'}\n" for (@result);
 
 =head1 AUTHOR
