@@ -13,7 +13,7 @@ use strict;
 use LWP::UserAgent;
 use URI::Escape;
 
-our $UAString = "Quniprot/$VERSION"; # User Agent string
+our $UAString = "Quniprot/$WWW::UniProt::VERSION"; # User Agent string
 
 BEGIN {
   our $VERSION = 0.002;
