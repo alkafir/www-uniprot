@@ -6,7 +6,7 @@ BEGIN {
   require File::Basename;
   require Cwd;
 
-  push @INC, Cwd::abs_path((File::Basename::fileparse(__FILE__))[1] . '../lib');
+  unshift @INC, Cwd::abs_path((File::Basename::fileparse(__FILE__))[1] . '../lib');
 }
 
 use WWW::UniProt qw(search get_protein);
