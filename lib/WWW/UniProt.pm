@@ -13,7 +13,7 @@ use strict;
 use LWP::UserAgent;
 use URI::Escape;
 
-our $UAString = "Quniprot/$WWW::UniProt::VERSION"; # User Agent string
+our $UAString = "WWW::UniProt/$WWW::UniProt::VERSION"; # User Agent string
 
 BEGIN {
   our $VERSION = 0.002;
@@ -232,6 +232,10 @@ documentation for information about connection settings.
   @result = WWW::UniProt::search 'russula', {columns => ['id', 'protein names']};
 
   print "ID: ${$_}{'id'}, Protein names: ${$_}{'protein names'}\n" for (@result);
+
+=head1 BUGS
+
+Compressed data transfer using C<compress=yes> is not yet supported.
 
 =head1 AUTHOR
 
