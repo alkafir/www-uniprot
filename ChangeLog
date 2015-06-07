@@ -1,6 +1,8 @@
 2015-06-07  Alfredo Mungo  <alqafir@cpan.org>
 	* lib/WWW/UniProt.pm (get_protein): Changed optional argument `dbname' to
 	the	more conformant `dataset'.
+	(get_protein): Restructured code and improved robustness.
+	(search): Added support for compressed data transfer.
 
 2015-06-06  Alfredo Mungo  <alqafir@cpan.org>
 	* lib/WWW/UniProt.pm: Subroutines aren't automatically exported anymore.

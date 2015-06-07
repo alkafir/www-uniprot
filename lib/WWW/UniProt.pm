@@ -12,11 +12,13 @@ use Exporter 'import';
 use strict;
 use LWP::UserAgent;
 use URI::Escape;
+use HTTP::Message;
+use IO::Uncompress::Gunzip qw(gunzip $GunzipError);
 
 our $UAString = "WWW::UniProt/$WWW::UniProt::VERSION"; # User Agent string
 
 BEGIN {
-  our $VERSION = 0.002;
+  our $VERSION = 0.003;
 
   our @EXPORT_OK = qw(get_protein search);
 }
@@ -36,15 +38,12 @@ BEGIN {
 # Returns:
 #  A string representing the FASTA file retrieve or undef if none is found
 sub get_protein {
-  my $protname = uc(shift);
+  my $protname = uri_escape(uc(shift));
   my $opt = shift // {};
 
-  my $dataset = ${$opt}{dataset} // 'uniprot';
-  my $format = ${$opt}{format} // 'fasta';
-  my $include = ${$opt}{include} // 0;
-
-  $format = lc($format) if (defined $format);
-  $dataset = lc($dataset) if (defined $dataset);
+  my $dataset = uri_escape(lc(${$opt}{dataset} // 'uniprot'));
+  my $format = uri_escape(lc(${$opt}{format} // 'fasta'));
+  my $include = uri_escape(${$opt}{include} // 0);
 
   # Retrieve entry
   my $agent = LWP::UserAgent->new(agent => $UAString);
@@ -86,11 +85,6 @@ sub search {
   while(my ($par, $val) = each(%$opt)) {
     next if($par eq 'format'); # Skip format, `tab' is enforced
 
-    if($par eq 'compress' && $val ne 'no') {
-      warn 'Compression not yet supported';
-      next;
-    }
-
     $url .= '&' . uri_escape($par) . '=' . uri_escape($val);
   }
 
@@ -98,12 +92,20 @@ sub search {
 
   # Retrieve data
   my $agent = LWP::UserAgent->new(agent => $UAString);
-  my $response = $agent->get($url);
+  my $response = $agent->get($url, 'Accept-Encoding' => 'gzip');
 
   return undef unless($response->is_success);
 
   my $result = $response->content;
   my @result = ();
+
+  # This is required since passing compress=yes as a parameter to the request
+  # makes UniProt return a gzipped file
+  if($response->header('Content-Type') eq 'application/x-gzip' || $response->header('Content-Encoding') eq 'gzip') {
+    my $result_raw = $result;
+
+    gunzip \$result_raw => \$result or die "Unable to decompress data: $GunzipError";
+  }
 
   $result =~ s/^.*?\n//s; # Drop header
 
@@ -232,10 +234,6 @@ documentation for information about connection settings.
   @result = WWW::UniProt::search 'russula', {columns => ['id', 'protein names']};
 
   print "ID: ${$_}{'id'}, Protein names: ${$_}{'protein names'}\n" for (@result);
-
-=head1 BUGS
-
-Compressed data transfer using C<compress=yes> is not yet supported.
 
 =head1 AUTHOR
 
