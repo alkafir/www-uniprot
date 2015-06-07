@@ -1,6 +1,7 @@
 blib/
 _build/
 Build
+Build.bat
 *.yml
 *.json
 *.bak
