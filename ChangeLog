@@ -1,2 +1,10 @@
+2015-06-07  Alfredo Mungo  <alqafir@cpan.org>
+	* lib/WWW/UniProt.pm (get_protein): Changed optional argument `dbname' to
+	the	more conformant `dataset'.
+
 2015-06-06  Alfredo Mungo  <alqafir@cpan.org>
-	* lib/WWW/UniProt.pm: subroutines aren't automatically exported anymore
+	* lib/WWW/UniProt.pm: Subroutines aren't automatically exported anymore.
+
+Copyright 2015 Alfredo Mungo
+Copying and distribution of this file, with or without modification, are
+permitted provided the copyright notice and this notice are preserved.

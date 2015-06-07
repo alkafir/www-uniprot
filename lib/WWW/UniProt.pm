@@ -26,7 +26,7 @@ BEGIN {
 # Arguments:
 #  $protname: A string representing the protein name
 #  \%opt: A dictionary reference for optional parameters. Supported keys are:
-#   - dbname: A string representing the database to search (i.e. 'uniprot',
+#   - dataset: A string representing the database to search (i.e. 'uniprot',
 #    'uniref', 'uniparc'; defaults to 'uniprot')
 #   - format: A string representing the format of the data to retrieve (i.e.
 #    'fasta', 'xml', 'rdf', etc...; defaults to 'fasta')
@@ -39,16 +39,16 @@ sub get_protein {
   my $protname = uc(shift);
   my $opt = shift // {};
 
-  my $dbname = ${$opt}{dbname} // 'uniprot';
+  my $dataset = ${$opt}{dataset} // 'uniprot';
   my $format = ${$opt}{format} // 'fasta';
   my $include = ${$opt}{include} // 0;
 
   $format = lc($format) if (defined $format);
-  $dbname = lc($dbname) if (defined $dbname);
+  $dataset = lc($dataset) if (defined $dataset);
 
   # Retrieve entry
   my $agent = LWP::UserAgent->new(agent => $UAString);
-  my $query_url = "http://www.uniprot.org/$dbname/$protname.$format"
+  my $query_url = "http://www.uniprot.org/$dataset/$protname.$format"
     . (($include && ($format eq 'xml' || $format eq 'rdf'))? '?include=yes': '');
   my $response = $agent->get($query_url);
   
