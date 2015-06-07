@@ -5,7 +5,7 @@ WWW::UniProt - UniProt search and data retrieval module
 # SYNOPSIS
 
     use WWW::UniProt;
-    $fasta = get_protein 'Q8JJY4'; # Grab FASTA
+    $fasta = WWW::UniProt::get_protein 'Q8JJY4'; # Grab FASTA
 
 # DESCRIPTION
 
@@ -51,7 +51,7 @@ or `undef` if the data could not be retrieved.
 
 This subroutine performs a search on UniProt. It accepts one mandatory argument
 `$query` and one optional `\%opts`. The `$query` argument is a query string
-that will be used to search UniProt (i.e. 'myosine', 'amoeba', etc...). The
+that will be used to search UniProt (i.e. 'myosin', 'amoeba', etc...). The
 `\%opts` argument is an optional reference to a hash of optional arguments.
 
 ### Optional arguments
@@ -82,15 +82,20 @@ This subroutine returns an array of records returned by the performed search or
 reference in which each key is the name of one of the requested columns and
 each value is the value of that column for that record.
 
+# CONNECTION SETTINGS
+
+As this module uses **LWP** to connect to UniProt, please refer to its
+documentation for information about connection settings.
+
 # EXAMPLES
 
     # This example prints the 'ID' and 'protein names' field of the proteins
     # retrieved from UniProt, searching 'russula'.
-    
+
     use WWW::UniProt;
-    
-    @result = search 'russula', {columns => ['id', 'protein names']};
-    
+
+    @result = WWW::UniProt::search 'russula', {columns => ['id', 'protein names']};
+
     print "ID: ${$_}{'id'}, Protein names: ${$_}{'protein names'}\n" for (@result);
 
 # AUTHOR
@@ -101,3 +106,7 @@ Alfredo Mungo <alqafir@cpan.org>
 
 This library is free software; you may redistribute it and/or modify it under
 the same terms as Perl itself.
+
+# SEE ALSO
+
+[LWP](https://metacpan.org/pod/LWP)
