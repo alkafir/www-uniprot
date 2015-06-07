@@ -132,7 +132,7 @@ WWW::UniProt - UniProt search and data retrieval module
 =head1 SYNOPSIS
 
   use WWW::UniProt;
-  $fasta = get_protein 'Q8JJY4'; # Grab FASTA
+  $fasta = WWW::UniProt::get_protein 'Q8JJY4'; # Grab FASTA
 
 =head1 DESCRIPTION
 
@@ -224,7 +224,7 @@ each value is the value of that column for that record.
 
   use WWW::UniProt;
 
-  @result = search 'russula', {columns => ['id', 'protein names']};
+  @result = WWW::UniProt::search 'russula', {columns => ['id', 'protein names']};
 
   print "ID: ${$_}{'id'}, Protein names: ${$_}{'protein names'}\n" for (@result);
 
