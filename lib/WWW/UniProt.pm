@@ -217,6 +217,11 @@ C<undef> if the request could not be satisfied. Each element is a hash
 reference in which each key is the name of one of the requested columns and
 each value is the value of that column for that record.
 
+=head1 CONNECTION SETTINGS
+
+As this module uses B<LWP> to connect to UniProt, please refer to its
+documentation for information about connection settings.
+
 =head1 EXAMPLES
 
   # This example prints the 'ID' and 'protein names' field of the proteins
@@ -236,5 +241,9 @@ Alfredo Mungo <alqafir@cpan.org>
 
 This library is free software; you may redistribute it and/or modify it under
 the same terms as Perl itself.
+
+=head1 SEE ALSO
+
+L<LWP>
 
 =cut
