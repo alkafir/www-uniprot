@@ -2,6 +2,7 @@
 
 # FASTA retrieval test
 
+use strict;
 use warnings;
 
 BEGIN {
@@ -20,7 +21,9 @@ $fasta_net =~ s/^>.*//; # Drop comments
 $fasta_net =~ s/\r?\n//g; # Drop newlines
 
 # Local FASTA
-$fasta_loc = join '', <DATA>;
+undef local $/;
+$fasta_loc = <DATA>;
+local $/ = "\n";
 $fasta_loc =~ s/^>.*//;
 $fasta_loc =~ s/\r?\n//g;
 

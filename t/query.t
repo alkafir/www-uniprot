@@ -2,6 +2,7 @@
 
 # UniProt query test
 
+use strict;
 use warnings;
 
 BEGIN {
