@@ -51,7 +51,7 @@ sub get_protein {
     . (($include && ($format eq 'xml' || $format eq 'rdf'))? '?include=yes': '');
   my $response = $agent->get($query_url);
   
-  return undef unless($response->is_success);
+  return unless($response->is_success);
   return $response->content;
 }
 
@@ -94,7 +94,7 @@ sub search {
   my $agent = LWP::UserAgent->new(agent => $UAString);
   my $response = $agent->get($url, 'Accept-Encoding' => 'gzip');
 
-  return undef unless($response->is_success);
+  return unless($response->is_success);
 
   my $result = $response->content;
   my @result = ();
