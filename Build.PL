@@ -15,7 +15,15 @@ my $build = Module::Build->new (
   },
   configure_requires => {
     'Module::Build' => '0.42'
-  }
+  },
+  add_to_cleanup => [
+    'MANIFEST',
+    '*.json',
+    '*.yml',
+    'README',
+    '*.bak',
+    '*.tar.gz'
+  ]
 );
 
 $build->create_build_script;
