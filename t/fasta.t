@@ -12,11 +12,11 @@ BEGIN {
   unshift @INC, Cwd::abs_path((File::Basename::fileparse(__FILE__))[1] . '../lib');
 }
 
-use WWW::UniProt qw(get_protein);
+use WWW::UniProt qw(prot_data);
 use Test::Simple tests => 1;
 
 # Network FASTA
-my $fasta_net = get_protein 'Q8JJY4'; # Grab FASTA
+my $fasta_net = prot_data 'Q8JJY4'; # Grab FASTA
 $fasta_net =~ s/^>.*//; # Drop comments
 $fasta_net =~ s/\r?\n//g; # Drop newlines
 

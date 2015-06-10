@@ -1,3 +1,7 @@
+2015-06-10  Alfredo Mungo  <alqafir@cpan.org>
+	* lib/WWW/UniProt.pm (get_protein): Refactored subroutine name to
+	`prot_data'.
+
 2015-06-07  Alfredo Mungo  <alqafir@cpan.org>
 	* lib/WWW/UniProt.pm (get_protein): Changed optional argument `dbname' to
 	the	more conformant `dataset'.

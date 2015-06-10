@@ -12,4 +12,4 @@ BEGIN { # Use bundled library
 
 use WWW::UniProt;
 
-print WWW::UniProt::get_protein 'Q9NII1'; # Print FASTA
+print WWW::UniProt::prot_data 'Q9NII1'; # Print FASTA

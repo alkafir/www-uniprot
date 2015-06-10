@@ -10,8 +10,8 @@ BEGIN {
   unshift @INC, Cwd::abs_path((File::Basename::fileparse(__FILE__))[1] . '../lib');
 }
 
-use WWW::UniProt qw(search get_protein);
+use WWW::UniProt qw(search prot_data);
 
-@result = search 'russula', {columns => ['id', 'protein names']};
+my @result = search 'russula', {columns => ['id', 'protein names']};
 
 print "ID: ${$_}{'id'}, Protein names: ${$_}{'protein names'}\n" for (@result);

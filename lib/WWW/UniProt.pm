@@ -18,9 +18,9 @@ use IO::Uncompress::Gunzip qw(gunzip $GunzipError);
 our $UAString = "WWW::UniProt/$WWW::UniProt::VERSION"; # User Agent string
 
 BEGIN {
-  our $VERSION = 0.003;
+  our $VERSION = 0.004;
 
-  our @EXPORT_OK = qw(get_protein search);
+  our @EXPORT_OK = qw(prot_data search);
 }
 
 # Retrieves the required protein entry from the UniProt database.
@@ -37,7 +37,7 @@ BEGIN {
 #
 # Returns:
 #  A string representing the FASTA file retrieve or undef if none is found
-sub get_protein {
+sub prot_data {
   my $protname = uri_escape(uc(shift));
   my $opt = shift // {};
 
@@ -134,16 +134,16 @@ WWW::UniProt - UniProt search and data retrieval module
 =head1 SYNOPSIS
 
   use WWW::UniProt;
-  $fasta = WWW::UniProt::get_protein 'Q8JJY4'; # Grab FASTA
+  $fasta = WWW::UniProt::prot_data 'Q8JJY4'; # Grab FASTA
 
 =head1 DESCRIPTION
 
 This module allows programmatic access the UniProt database.
 Currently two subroutines are available:
 
-=head2 get_protein($protname)
+=head2 prot_data($protname)
 
-=head2 get_protein($protname, \%opts)
+=head2 prot_data($protname, \%opts)
 
 This subroutine retrieves information about a protein from the UniProt
 database. It accepts one mandatory argument C<$query> and one optional
