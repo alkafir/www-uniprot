@@ -15,8 +15,8 @@ BEGIN {
 use WWW::UniProt qw(search);
 use Test::Simple tests => 1;
 
-@result = search 'myosine';
-$result = 0;
+my @result = search 'myosine';
+my $result = 0;
 
 for (@result) {
   $result++ if(${$_}{'id'} eq 'Q8JJY4');

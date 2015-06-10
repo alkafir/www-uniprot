@@ -16,13 +16,13 @@ use WWW::UniProt qw(get_protein);
 use Test::Simple tests => 1;
 
 # Network FASTA
-$fasta_net = get_protein 'Q8JJY4'; # Grab FASTA
+my $fasta_net = get_protein 'Q8JJY4'; # Grab FASTA
 $fasta_net =~ s/^>.*//; # Drop comments
 $fasta_net =~ s/\r?\n//g; # Drop newlines
 
 # Local FASTA
 undef local $/;
-$fasta_loc = <DATA>;
+my $fasta_loc = <DATA>;
 local $/ = "\n";
 $fasta_loc =~ s/^>.*//;
 $fasta_loc =~ s/\r?\n//g;
