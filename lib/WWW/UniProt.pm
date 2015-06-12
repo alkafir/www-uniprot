@@ -156,7 +156,7 @@ optional arguments.
 
 =over
 
-=item dbname
+=item dataset
 
 A string representing the database to search (i.e. 'uniprot', 'uniref',
 'uniparc'; defaults to 'uniprot')

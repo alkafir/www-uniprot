@@ -5,16 +5,16 @@ WWW::UniProt - UniProt search and data retrieval module
 # SYNOPSIS
 
     use WWW::UniProt;
-    $fasta = WWW::UniProt::get_protein 'Q8JJY4'; # Grab FASTA
+    $fasta = WWW::UniProt::prot_data 'Q8JJY4'; # Grab FASTA
 
 # DESCRIPTION
 
 This module allows programmatic access the UniProt database.
 Currently two subroutines are available:
 
-## get\_protein($protname)
+## prot\_data($protname)
 
-## get\_protein($protname, \\%opts)
+## prot\_data($protname, \\%opts)
 
 This subroutine retrieves information about a protein from the UniProt
 database. It accepts one mandatory argument `$query` and one optional
@@ -25,7 +25,7 @@ optional arguments.
 
 ### Optional arguments
 
-- dbname
+- dataset
 
     A string representing the database to search (i.e. 'uniprot', 'uniref',
     'uniparc'; defaults to 'uniprot')
